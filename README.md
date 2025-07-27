@@ -29,4 +29,4 @@ This repo provides code used during the autoencoding of heuslerene band structur
 ### Credits
 By Justin Hart, 2025.
 
- Note that the Autoencoder Model is from Pentz et. al. at their [Elf Autoencoder](https://doi.org/10.1038/s42005-025-01936-2) paper. 1
+ Note that the Autoencoder Model is from Pentz et. al. at their [Elf Autoencoder](https://doi.org/10.1038/s42005-025-01936-2) paper. 
