@@ -111,7 +111,7 @@ class BandStructure2d():
         return fig
     
     def plot_large(self, energy_window=(-3,3), sym_points=None, color='black', 
-                   linewidth=0.5, save_path=None, title_size=12, text_size=10, number_size=10):
+                   linewidth=1, save_path=None, title_size=12, text_size=10, number_size=10):
         """ return a MatPlotLib figure of the band structure in a set range of the fermi energy
         """
 
@@ -122,10 +122,14 @@ class BandStructure2d():
             ax.plot(self.distances, band, color=color, linewidth=linewidth)
 
         ax.set_ylim(*energy_window)
-        ax.tick_params(axis='y', labelsize=number_size)
-        ax.axhline(0, color='red', linestyle='--', linewidth=0.5)
+        ax.tick_params(axis='y', labelsize=number_size, width=2)
+        ax.axhline(0, color='red', linestyle='--', linewidth=linewidth)
 
         ax.set_xlim(self.distances[0], self.distances[-1])
+        ax.spines['bottom'].set_linewidth(2)  # Set x-axis linewidth to 2
+        ax.spines['left'].set_linewidth(2) 
+        ax.spines['top'].set_linewidth(2) 
+        ax.spines['right'].set_linewidth(2) 
 
         if sym_points:
             # indices that mark Γ, M, K, Γ  (0‑based)
@@ -136,11 +140,10 @@ class BandStructure2d():
             ax.set_xticks(x_sym)
             ax.set_xticklabels(labels, fontsize=text_size)
             for x in x_sym[1:-1]:
-                ax.axvline(x, color="0.7", linewidth=0.4, zorder=0)
+                ax.axvline(x, color="0.7", linewidth=linewidth*1.5, zorder=0)
 
 
         ax.set_ylabel("Energy (eV)",fontsize=text_size)
-        ax.set_xlabel("k-path",fontsize=text_size)
         ax.set_title(f"{self.element_special}", fontsize=title_size)
 
         if save_path:
